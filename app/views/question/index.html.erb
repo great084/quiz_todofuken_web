@@ -6,13 +6,15 @@
 <%= form_with url: question_create_path, class: "question-form" do |f| %>
   <div class="row">
     <div class="col-sm-6 p-3">
-     <%= f.label 'question_type_city', '県庁所在地あて' %>
-     <%= f.radio_button 'question_type','city' %>
+     <%= f.radio_button :question_type,'city' %>
+     <%= f.label :question_type_city, '県庁所在地あて' %>
     </div>
     <div class="col-sm-6 p-3">
-     <%= f.label 'question_type_pref', '都道府県あて' %>
-     <%= f.radio_button 'question_type','pref' %>
+     <%= f.radio_button :question_type,'pref' %>
+     <%= f.label :question_type_pref, '都道府県あて' %>
     </div>
+    <%= f.label 'number_of_questions', '出題数' %>
+    <%= f.number_field :number_of_quesitons, in: 1..47, step: 1 %>
   </div>
   <%= f.submit '開始' ,class:"btn btn-lg btn-primary" %>
 <% end %>
