@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ .question-form{
+   max-width: 500px;
+   margin: 0 auto;
+ }

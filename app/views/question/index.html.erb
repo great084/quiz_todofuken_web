@@ -1,12 +1,19 @@
 
-<div class="container">
+<div class="container m-4">
+<div class="title">
+  <h1 class="text-center">都道府県クイズ</h1>
+</div>
+<%= form_with url: question_create_path, class: "question-form" do |f| %>
   <div class="row">
-    <div class="col-sm-6">
-     <p>県庁所在地あて</p>
+    <div class="col-sm-6 p-3">
+     <%= f.label 'question_type_city', '県庁所在地あて' %>
+     <%= f.radio_button 'question_type','city' %>
     </div>
-    <div class="col-sm-6">
-     <p>都道府県あて</p>
+    <div class="col-sm-6 p-3">
+     <%= f.label 'question_type_pref', '都道府県あて' %>
+     <%= f.radio_button 'question_type','pref' %>
     </div>
   </div>
-  <div class="btn btn-lg btn-primary">開始</div>
+  <%= f.submit '開始' ,class:"btn btn-lg btn-primary" %>
+<% end %>
 </div>
