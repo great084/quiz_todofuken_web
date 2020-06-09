@@ -1,7 +1,10 @@
+<%= Gon::Base.render_data %>
 <h1>クイズ開始</h1>
-<% @questions.each do |question| %>
-<div>
-<p>問題 : <%= question.prefecture_name %> の県庁所在地は？
-</p>
-</div>
-<% end %>
+<h2 id="_question">ここに問題が表示されます。</h2>
+
+<script>
+
+// 問題を表示するオブジェクトを取得する
+var Q = document.getElementById('_question');
+Q.textContent = gon.quiz_data[0][0];
+</script>
