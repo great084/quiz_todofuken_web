@@ -3,7 +3,7 @@
 <div class="title">
   <h1 class="text-center">都道府県クイズ</h1>
 </div>
-<%= form_with url: question_create_path, class: "question-form" do |f| %>
+<%= form_with url: question_create_path, class: "question-form", local: true do |f| %>
   <div class="row">
     <div class="col-sm-6 p-3">
      <%= f.radio_button :question_type,'city' %>
@@ -13,9 +13,11 @@
      <%= f.radio_button :question_type,'pref' %>
      <%= f.label :question_type_pref, '都道府県あて' %>
     </div>
-    <%= f.label 'number_of_questions', '出題数' %>
-    <%= f.number_field :number_of_quesitons, in: 1..47, step: 1 %>
+    <div class="form-group  m-2">
+      <%= f.label 'number_of_questions', '出題数' %>
+      <%= f.number_field :number_of_questions, in: 1..47, step: 1 , class: "form-control" %>
+    </div>
   </div>
-  <%= f.submit '開始' ,class:"btn btn-lg btn-primary" %>
+  <%= f.submit '開始' ,class:"btn btn-block btn-primary" %>
 <% end %>
 </div>
