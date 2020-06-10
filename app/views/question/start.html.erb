@@ -1,10 +1,75 @@
 <%= Gon::Base.render_data %>
-<h1>クイズ開始</h1>
-<h2 id="_question">ここに問題が表示されます。</h2>
 
+<div class="container">
+  <h1 id="question-title">「クイズ開始」ボタンを押して、クイズを始めよう</h1>
+  <h2 id="question">ここに問題が表示されます。</h2>
+
+  <div class="row answers">
+    <div class="col-6 answer">
+      <button class="btn btn-lg btn-primary btn-block">選択肢１</button>
+    </div>
+    <div class="col-6 answer">
+      <button class="btn btn-lg btn-primary btn-block">選択肢１</button>
+    </div>
+    <div class="col-6 answer">
+      <button class="btn btn-lg btn-primary btn-block">選択肢１</button>
+    </div>
+    <div class="col-6 answer">
+      <button class="btn btn-lg btn-primary btn-block">選択肢１</button>
+    </div>
+  </div>
+
+
+  <button class="btn btn-lg btn-block btn-success quiz-start">クイズ開始</button>
+  <button class="btn btn-lg btn-block btn-success quiz-end" disabled>クイズ終了</button>
+  <div class="question-judge"></div>
+</div>
 <script>
 
 // 問題を表示するオブジェクトを取得する
-var Q = document.getElementById('_question');
-Q.textContent = gon.quiz_data[0][0];
+// var Q = document.getElementById('question');
+// Q.textContent = gon.quiz_data[0][0];
+
+$(function(){
+  var $q_cnt = 0;
+  var $correct_cnt = 0;
+
+  $('.quiz-start').click( function(){
+    var $slide = Math.floor(Math.random() * 4);
+    // alert(gon.quiz_data[$question_number]); 
+
+    $('#question-title').text("第" + ($q_cnt + 1) + "問  /  全： " + gon.quiz_data.length + "問");
+    $('#question').text("問題： " + gon.quiz_data[$q_cnt][0] + "の県庁所在地は？")
+
+    for (var i=0; i<4; i++){
+      var j = (i + $slide ) % 4 ; 
+      // console.log(gon.quiz_data[0][i]);
+      // $('.answers .answer:nth-child(" + i + ") .btn').text(gon.quiz_data[0][i]);
+      $('.answer').eq(j).children('.btn').text(gon.quiz_data[$q_cnt][i+1]);
+      if (i==0){
+        $('.answer').eq(j).children('.btn').addClass('correct_answer');
+      }
+      $('.answers').find('.btn').prop('disabled', false)
+    }
+    $q_cnt++;
+  });
+
+  $('.answer').children('.btn').click( function(){
+    if ($(this).hasClass('correct_answer')){
+      $('.question-judge').text("正解です！");
+      $correct_cnt++;
+    }else{
+      $('.question-judge').text("違います！");
+    }
+    $('.answers').find('.btn').prop('disabled', true).removeClass('correct_answer');
+    // $('.answers').find('.btn').addClass('btn-secondary');
+
+    if ($q_cnt == gon.quiz_data.length){
+      $('.quiz-start').prop('disabled', true);
+      $('.quiz-end').prop('disabled', false);
+    }
+  });
+
+});
+
 </script>
