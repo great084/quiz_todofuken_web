@@ -7,10 +7,12 @@
     <!-- モーダル起動ボタン -->
     <button class="btn btn-lg btn-block btn-success quiz-start" data-toggle="modal" data-target="#quizModal">クイズ開始</button>
   </div>
+  <div class="quiz-result-area">
+  </div>
 </div>
 
   <!-- モーダルウィンドウ -->
-  <div class="modal fade" id="quizModal" tabindex="1">
+  <div class="modal fade" id="quizModal" tabindex="1" data-backdrop='static'>
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -39,7 +41,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-lg btn-block btn-success quiz-next">次の問題へ</button>
-          <button class="btn btn-lg btn-block btn-success quiz-end" disabled>クイズ終了</button>
+          <button class="btn btn-lg btn-block btn-success quiz-end" data-dismiss="modal" disabled>クイズ終了</button>
         </div>
       </div>
     </div></div>
@@ -55,6 +57,7 @@
 $(function(){
   var $q_cnt = 0;
   var $correct_cnt = 0;
+  var total_cnt = gon.quiz_data.length;
 
   var displayTitle = function(cnt, total){
     $('#question-title').text("第；" + (cnt) + "問   /   全：" + total + "問");
@@ -109,6 +112,10 @@ $(function(){
       $('.quiz-end').prop('disabled', false);
     }
   });
+
+  $('.quiz-end').click( function() {
+    $('.quiz-result-area').html("<h2>あなたは" + total_cnt + "問中、" + $correct_cnt + "問、正解しました！</h2>");
+  })
 
 });
 
