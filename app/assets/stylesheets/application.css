@@ -18,3 +18,12 @@
    max-width: 500px;
    margin: 0 auto;
  }
+
+ .quiz-start-area{
+  max-width:630px;
+  margin:0 auto;
+}
+
+.queestion-judge-area{
+  height: 3rem;
+}

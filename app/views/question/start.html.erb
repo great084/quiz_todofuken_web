@@ -1,15 +1,17 @@
 <%= Gon::Base.render_data %>
 
 <div class="container">
-  <h1>「クイズ開始」ボタンを押して、クイズを始めよう</h1>
+  <div class="quiz-start-area">
+    <h1>「クイズ開始」ボタンを押して、クイズを始めよう</h1>
 
-  <!-- モーダル起動ボタン -->
-  <button class="btn btn-lg btn-block btn-success quiz-start" data-toggle="modal" data-target="#quizModal">クイズ開始</button>
+    <!-- モーダル起動ボタン -->
+    <button class="btn btn-lg btn-block btn-success quiz-start" data-toggle="modal" data-target="#quizModal">クイズ開始</button>
+  </div>
 </div>
 
   <!-- モーダルウィンドウ -->
   <div class="modal fade" id="quizModal" tabindex="1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="question-title">モーダルタイトル</h5>
@@ -31,7 +33,9 @@
               <button class="btn btn-lg btn-primary btn-block">選択肢１</button>
             </div>
           </div>
-          <h1 class="question-judge"></h1>
+          <div class="queestion-judge-area">
+            <h1 class="question-judge"></h1>
+          </div>
         </div>
         <div class="modal-footer">
           <button class="btn btn-lg btn-block btn-success quiz-next">次の問題へ</button>
@@ -63,15 +67,21 @@ $(function(){
     var $slide = Math.floor(Math.random() * 4);
     for (var i=0; i<4; i++){
       var j = (i + $slide ) % 4 ; 
-      $('.answer').eq(j).children('.btn').text(gon.quiz_data[$q_cnt][i+1]);
+      $('.answer').eq(j).children('.btn').text(gon.quiz_data[cnt][i+1]);
       if (i==0){
         $('.answer').eq(j).children('.btn').addClass('correct_answer');
       }
       $('.answers').find('.btn').prop('disabled', false)
     }
+    // 判定エリアの文言クリア
+    $('.question-judge').text("");
   }
 
   $('.quiz-start').click( function(){
+    $q_cnt = 0;
+    $correct_cnt = 0;
+    $('.question-judge').text("");
+
     displayTitle(1, gon.quiz_data.length);
     displayQuestionAndAnswers(0)
     $q_cnt++
@@ -81,21 +91,6 @@ $(function(){
 
     displayTitle($q_cnt + 1, gon.quiz_data.length);
     displayQuestionAndAnswers($q_cnt);
-
-    // var $slide = Math.floor(Math.random() * 4);
-
-    // $('#question').text("問題： " + gon.quiz_data[$q_cnt][0] + "の県庁所在地は？")
-
-    // for (var i=0; i<4; i++){
-    //   var j = (i + $slide ) % 4 ; 
-    //   // console.log(gon.quiz_data[0][i]);
-    //   // $('.answers .answer:nth-child(" + i + ") .btn').text(gon.quiz_data[0][i]);
-    //   $('.answer').eq(j).children('.btn').text(gon.quiz_data[$q_cnt][i+1]);
-    //   if (i==0){
-    //     $('.answer').eq(j).children('.btn').addClass('correct_answer');
-    //   }
-    //   $('.answers').find('.btn').prop('disabled', false)
-    // }
     $q_cnt++;
   });
 
