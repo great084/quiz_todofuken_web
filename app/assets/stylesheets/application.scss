@@ -13,13 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap/scss/bootstrap";
 
  .question-form{
    max-width: 500px;
    margin: 0 auto;
  }
 
- .quiz-start-area{
+ .quiz-start-area, .quiz-result-area{
   max-width:630px;
   margin:0 auto;
 }
