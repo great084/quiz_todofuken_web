@@ -9,7 +9,7 @@
       <legend class="col-form-label col-sm-4 pt-0">クイズを選ぼう！</legend>
       <div class="col-sm-8">
         <div class="form-check">
-          <%= f.radio_button :question_type,'city', class: "form-check-input" %>
+          <%= f.radio_button :question_type,'city', class: "form-check-input", checked: true %>
           <%= f.label :question_type_city, '県庁所在地あて', class: "form-check-label"  %>
         </div>
         <div class="form-check">

@@ -7,7 +7,7 @@ class QuestionController < ApplicationController
     # byebug
     quiz_order = (0..46).to_a.shuffle.slice(0..(params[:number_of_questions].to_i)-1)
     # byebug
-    puts "問題番号は#{quiz_order}です。問題数は#{quiz_order.count}です。"
+    # puts "問題番号は#{qui z_order}です。問題数は#{quiz_order.count}です。"
     # @prefectures = Prefecture.where(id: quiz_order)
     # 都道府県と県庁所在地の組み合わせデータをすべて読み込み
     prefectures = Prefecture.all
@@ -20,7 +20,6 @@ class QuestionController < ApplicationController
     questions = []
     slide_num = rand(1..47)
     if params[:question_type] == "city"
-      # byebug
       quiz_order.each do |num|
         questions <<
           [ pref_data[num][0],                        # 県名
@@ -32,8 +31,19 @@ class QuestionController < ApplicationController
       end
       # byebug
     else
+      quiz_order.each do |num|
+        questions <<
+          [ pref_data[num][1],                        # 都市名
+            pref_data[num][0],                        # 県名の正解
+            pref_data[(num + slide_num * 1) % 47][0], # 県名の誤解１
+            pref_data[(num + slide_num * 2) % 47][0], # 県名の誤解２
+            pref_data[(num + slide_num * 3) % 47][0]  # 県名の誤解３
+          ] 
+      end
+      # byebug
     end
     gon.quiz_data = questions
+    gon.quiz_type = params[:question_type]
     render 'question/start'
   end
 end
