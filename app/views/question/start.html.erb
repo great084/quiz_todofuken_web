@@ -60,7 +60,7 @@ $(function(){
   var total_cnt = gon.quiz_data.length;
 
   var displayTitle = function(cnt, total){
-    $('#question-title').text("第；" + (cnt) + "問   /   全：" + total + "問");
+    $('#question-title').text("第：" + (cnt) + "問   /   全：" + total + "問");
   }
 
   var displayQuestionAndAnswers = function(cnt){
@@ -87,6 +87,10 @@ $(function(){
 
     displayTitle(1, gon.quiz_data.length);
     displayQuestionAndAnswers(0)
+
+    $('.quiz-next').prop('disabled', false);
+    $('.quiz-end').prop('disabled', true);
+
     $q_cnt++
   })
 
