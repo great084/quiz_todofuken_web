@@ -1,23 +1,24 @@
 <%= Gon::Base.render_data %>
 
 <div class="container">
+  <div class="quiz-form">
     <div class="row">
-      <div class="col-form-label col-sm-4 pt-0">クイズの種類</div>
+      <div class="col-sm-4 pt-0">クイズの種類</div>
       <div class="col-sm-8">
-        <% if @quiz_type == "city" %> 
+        <% if @quiz_type == "capital" %> 
           県庁所在地あて
         <% else %>
-          都道府県あて
+          都道府県名あて
         <% end %>
       </div>
     </div>
-  </fieldset>
-  <div class="form-group row mt-2">
-    <div class="col-sm-4">
-      出題数
-    </div>
-    <div class="col-sm-8">
-      <%= @number_of_questions  %>問
+    <div class="row mt-2">
+      <div class="col-sm-4">
+        出題数
+      </div>
+      <div class="col-sm-8">
+        <%= @quiz_numbers  %>問
+      </div>
     </div>
   </div>
 
@@ -55,8 +56,8 @@
               <button class="btn btn-lg btn-primary btn-block">選択肢１</button>
             </div>
           </div>
-          <div class="queestion-judge-area">
-            <h1 class="question-judge"></h1>
+          <div class="quiz-judge-area">
+            <h1 class="quiz-judge-sentence"></h1>
           </div>
         </div>
         <div class="modal-footer">
@@ -70,15 +71,12 @@
 
 <script>
 
-// 問題を表示するオブジェクトを取得する
-// var Q = document.getElementById('question');
-// Q.textContent = gon.quiz_data[0][0];
 
 $(function(){
   var $q_cnt = 0;
   var $correct_cnt = 0;
   var total_cnt = gon.quiz_data.length;
-  var questionSentence = ( gon.quiz_type == "city") ? "の県庁所在地は？" : "がある都道府県は？";
+  var questionSentence = ( gon.quiz_type == "capital") ? "の県庁所在地は？" : "がある都道府県は？";
 
 
   var displayTitle = function(cnt, total){
@@ -98,19 +96,19 @@ $(function(){
       }
       $('.answers').find('.btn').prop('disabled', false)
     }
-    // 判定エリアの文言クリア
-    $('.question-judge').text("");
+    // 判定文言のクリア
+    $('.quiz-judge-sentence').text("");
   }
 
   $('.quiz-start').click( function(){
     $q_cnt = 0;
     $correct_cnt = 0;
-    $('.question-judge').text("");
+    $('.quiz-judge-sentence').text("");
 
-    displayTitle(1, gon.quiz_data.length);
+    displayTitle(1, total_cnt);
     displayQuestionAndAnswers(0)
 
-    $('.quiz-next').prop('disabled', false);
+    $('.quiz-next').prop('disabled', true);
     $('.quiz-end').prop('disabled', true);
 
     $q_cnt++
@@ -118,24 +116,28 @@ $(function(){
 
   $('.quiz-next').click( function(){
 
-    displayTitle($q_cnt + 1, gon.quiz_data.length);
+    displayTitle($q_cnt + 1, total_cnt);
     displayQuestionAndAnswers($q_cnt);
+
+    $('.quiz-next').prop('disabled', true);
+
     $q_cnt++;
   });
 
   $('.answer').children('.btn').click( function(){
     if ($(this).hasClass('correct_answer')){
-      $('.question-judge').text("正解です！");
+      $('.quiz-judge-sentence').text("正解です！");
       $correct_cnt++;
     }else{
-      $('.question-judge').text("違います！");
+      $('.quiz-judge-sentence').text("違います！");
     }
     $('.answers').find('.btn').prop('disabled', true).removeClass('correct_answer');
     // $('.answers').find('.btn').addClass('btn-secondary');
 
-    if ($q_cnt == gon.quiz_data.length){
-      $('.quiz-next').prop('disabled', true);
+    if ($q_cnt == total_cnt){
       $('.quiz-end').prop('disabled', false);
+    }else{
+      $('.quiz-next').prop('disabled', false);
     }
   });
 

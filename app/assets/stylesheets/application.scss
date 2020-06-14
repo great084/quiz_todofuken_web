@@ -15,17 +15,44 @@
  */
  @import "bootstrap/scss/bootstrap";
 
- .question-form{
-   max-width: 500px;
+body {
+  background-color: #fffffe;
+  font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic'  ;
+}
+
+.title-area {
+  color: #00214d;
+}
+
+.color-1{
+  color: #00ebc7;
+}
+
+.color-2{
+  color: #ff5470;
+}
+
+.color-3{
+  color: #fde24f;
+}
+.color-4{
+  color: #1b2d45;
+}
+
+
+.question-form, .quiz-form{
+   max-width: 630px;
    margin: 0 auto;
  }
 
- .quiz-start-area, .quiz-result-area{
+.quiz-start-area, .quiz-result-area{
   max-width:630px;
   margin:0 auto;
 }
 
-.queestion-judge-area{
+.queestion-judge-area, .quiz-judge-area{
   height: 3rem;
 }
+
+// ボタンデザイン
 

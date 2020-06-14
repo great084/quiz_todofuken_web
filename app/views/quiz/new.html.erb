@@ -1,0 +1,26 @@
+<%= form_with url: quiz_create_path, class: "quiz-form border rounded p-3", local: true do |f| %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-form-label col-sm-4 pt-0">クイズの種類</div>
+      <div class="col-sm-8">
+        <div class="form-check">
+          <%= f.radio_button :quiz_type,'capital', class: "form-check-input", checked: true %>
+          <%= f.label :quiz_type_capital, '県庁所在地あて', class: "form-check-label"  %>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :quiz_type,'pref', class: "form-check-input" %>
+          <%= f.label :quiz_type_pref, '都道府県名あて', class: "form-check-label" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row mt-2">
+    <div class="col-sm-4">
+      <%= f.label 'quiz_numbers', 'クイズの出題数' %>
+    </div>
+    <div class="col-sm-8">
+      <%= f.number_field :quiz_numbers, in: 1..47, step: 1 , class: "form-control" %>
+    </div>
+  </div>
+  <%= f.submit '開始' ,class:"btn btn-lg btn-success" %>
+<% end %>

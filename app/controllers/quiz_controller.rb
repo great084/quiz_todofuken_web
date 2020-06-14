@@ -1,32 +1,31 @@
-class QuestionController < ApplicationController
+class QuizController < ApplicationController
   def index
   end
 
   def new
     @quiz_type = "capital"
-    @quiz_count = 10
+    @quiz_numbers = 10
   end
 
   def create
-    puts params[:number_of_questions]
     # byebug
-    quiz_order = (0..46).to_a.shuffle.slice(0..(params[:number_of_questions].to_i)-1)
-    # byebug
-    # puts "問題番号は#{qui z_order}です。問題数は#{quiz_order.count}です。"
-    # @prefectures = Prefecture.where(id: quiz_order)
+    @quiz_type = params[:quiz_type]
+    @quiz_numbers = params[:quiz_numbers].to_i
+    # 出題する問題のデータ番号をランダムに設定する
+    quiz_order = (0..46).to_a.shuffle.slice(0..(@quiz_numbers)-1)
     # 都道府県と県庁所在地の組み合わせデータをすべて読み込み
-    prefectures = Prefecture.all
+    # prefectures = Prefecture.all
     pref_data = []
-    prefectures.each do |pref|
+    Prefecture.all.each do |pref|
       pref_data << [pref.prefecture_name, pref.capital]
     end
     
     # 四択問題にするために、[問題、正解、誤解1、誤解2,誤解3]の配列を出題数分作成する
-    questions = []
+    quiz_data = []
     slide_num = rand(1..47)
-    if params[:question_type] == "city"
+    if @quiz_type == "capital"
       quiz_order.each do |num|
-        questions <<
+        quiz_data <<
           [ pref_data[num][0],                        # 県名
             pref_data[num][1],                        # 都市名の正解
             pref_data[(num + slide_num * 1) % 47][1], # 都市名の誤解１
@@ -37,7 +36,7 @@ class QuestionController < ApplicationController
       # byebug
     else
       quiz_order.each do |num|
-        questions <<
+        quiz_data <<
           [ pref_data[num][1],                        # 都市名
             pref_data[num][0],                        # 県名の正解
             pref_data[(num + slide_num * 1) % 47][0], # 県名の誤解１
@@ -47,10 +46,8 @@ class QuestionController < ApplicationController
       end
       # byebug
     end
-    @quiz_type = params[:question_type]
-    @number_of_questions = params[:number_of_questions]
-    gon.quiz_data = questions
-    gon.quiz_type = params[:question_type]
-    render 'question/start'
+    gon.quiz_data = quiz_data
+    gon.quiz_type = @quiz_type
+    render 'question'
   end
 end

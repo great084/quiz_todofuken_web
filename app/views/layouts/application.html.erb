@@ -5,11 +5,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container mx-auto my-4" >
+      <div class="title-area text-center mb-4">
+      <h1 class="title">
+        <span class="color-1">都</span>
+        <span class="color-2">道</span>
+        <span class="color-3">府</span>
+        <span class="color-4">県</span>クイズ
+      </h1>
+      <h2 class="subtitle">47の県庁所在地 覚えちゃおう！！</h2>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -6,7 +6,7 @@
 <%= form_with url: question_create_path, class: "question-form", local: true do |f| %>
   <fieldset class="form-group">
     <div class="row">
-      <legend class="col-form-label col-sm-4 pt-0">クイズを選ぼう！</legend>
+      <legend class="col-form-label col-sm-4 pt-0">クイズの種類</legend>
       <div class="col-sm-8">
         <div class="form-check">
           <%= f.radio_button :question_type,'city', class: "form-check-input", checked: true %>
@@ -21,7 +21,7 @@
   </fieldset>
   <div class="form-group row mt-2">
     <div class="col-sm-4">
-      <%= f.label 'number_of_questions', '出題数' %>
+      <%= f.label 'number_of_questions', 'クイズの出題数' %>
     </div>
     <div class="col-sm-8">
       <%= f.number_field :number_of_questions, in: 1..47, step: 1 , class: "form-control" %>
