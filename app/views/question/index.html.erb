@@ -27,6 +27,7 @@
       <%= f.number_field :number_of_questions, in: 1..47, step: 1 , class: "form-control" %>
     </div>
   </div>
-  <%= f.submit '開始' ,class:"btn btn-block btn-primary" %>
+  <%= f.submit 'クイズスタート' ,class:"btn btn-block btn-primary" %>
 <% end %>
+<%= link_to '戻る', root_path, class: "btn btn-block btn-light" %>
 </div>
