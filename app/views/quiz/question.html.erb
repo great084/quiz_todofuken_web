@@ -1,14 +1,14 @@
 <%= Gon::Base.render_data %>
 
-<div class="container">
-  <div class="quiz-form">
+<h2 class="text-center my-2">クイズを始めよう</h2>
+  <div class="quiz-form border rounded p-3">
     <div class="row">
       <div class="col-sm-4 pt-0">クイズの種類</div>
       <div class="col-sm-8">
         <% if @quiz_type == "capital" %> 
-          県庁所在地あて
+          県庁所在地をあてる
         <% else %>
-          都道府県名あて
+          都道府県名をあてる
         <% end %>
       </div>
     </div>
@@ -22,18 +22,20 @@
     </div>
   </div>
 
+  <div class="quiz-result-area my-3 p-3 text-center">
+      <h2 class="quiz-result-sentence"></h2>
+      <h3 class="quiz-result-sentence-add  text-success"></h3>
+  </div>
+
   <div class="quiz-start-area">
-    <h1>「クイズ開始」ボタンを押して、クイズを始めよう</h1>
 
     <!-- モーダル起動ボタン -->
     <button class="btn btn-lg btn-block btn-success quiz-start" data-toggle="modal" data-target="#quizModal">クイズスタート</button>
     <!-- 戻るボタン -->
-    <%= link_to '戻る', root_path, class: "btn btn-block btn-light" %>
+    <%= link_to '戻る（クイズの種類と問題数を選びなおす）', root_path, class: "btn btn-lg btn-block btn-light" %>
 
   </div>
-  <div class="quiz-result-area">
-  </div>
-</div>
+
 
   <!-- モーダルウィンドウ -->
   <div class="modal fade" id="quizModal" tabindex="1" data-backdrop='static'>
@@ -145,7 +147,13 @@ $(function(){
   });
 
   $('.quiz-end').click( function() {
-    $('.quiz-result-area').html("<h2>あなたは" + total_cnt + "問中、" + $correct_cnt + "問、正解しました！</h2>");
+    $('.quiz-result-sentence').html( total_cnt + "問中、" + $correct_cnt + "問、正解しました！");
+    if ($correct_cnt == total_cnt){
+    $('.quiz-result-sentence-add').html("全問正解！すごいぜ！自慢しよう！");
+    }
+
+    $('.quiz-start').text("クイズスタート（復習する）")
+
   })
 
 });

@@ -1,16 +1,12 @@
 class QuizController < ApplicationController
-  def index
-  end
 
   def new
-    @quiz_type = "capital"
-    @quiz_numbers = 10
   end
 
   def create
-    # byebug
     @quiz_type = params[:quiz_type]
     @quiz_numbers = params[:quiz_numbers].to_i
+    # byebug
     # 出題する問題のデータ番号をランダムに設定する
     quiz_order = (0..46).to_a.shuffle.slice(0..(@quiz_numbers)-1)
     # 都道府県と県庁所在地の組み合わせデータをすべて読み込み
