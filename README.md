@@ -1,24 +1,30 @@
-# README
+# はじめに
+このWebアプリは都道府県と県庁所在地のクイズです。
+小学生の子供が、ちょうど都道府県の勉強をしており、自分のプログラムスキルのアウトプットとして、そして子供の勉強に役立てばと思い開発しました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# クイズの概要と遊び方
 
-Things you may want to cover:
+## 公開サイト
+https://todofuken-quiz.herokuapp.com/
 
-* Ruby version
+## クイズモード
+以下の２つのモードから選べます。
+- 1 : 都道府県名から県庁所在地を答える
+- 2 : 県庁所在地から県名を答える
 
-* System dependencies
+## 問題数
+１問〜47問まで選べます。
+すべての都道府県をシャッフルして、選んだ問題数４択で出題します。
 
-* Configuration
+# 工夫した点・チャレンジした点
+- なるべくシンプルにクイズ出題に特化した
+- 問題の順序や、選択肢の並びをランダムで表示できるようにした
+- 今まで扱ったことのなかった、jqueryにトライした。
 
-* Database creation
+# 使用した言語、フレームワーク
+このアプリは以下の言語、フレームワークで構成されています。
+- Ruby on Rails -> DBに格納された都道府県データから、問題を作成します。
+- HTML & CSS -> 
+- Bootstrap4 -> 画面のUIの省力化のために使用 
+- jquery -> 画面上で正誤判定を行うなどの処理に資料
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
