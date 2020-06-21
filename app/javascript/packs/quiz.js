@@ -30,13 +30,16 @@ document.addEventListener('turbolinks:load', () => {
     $('.quiz-start').click( function(){
       $q_cnt = 0;
       $correct_cnt = 0;
+
+      // ボタン表示の初期化
+      $('.quiz-next').removeClass('display-none');
+      $('.quiz-next').prop('disabled', true);
+      $('.quiz-end').addClass('display-none');
+
       $('.quiz-judge-sentence').text("");
   
       displayTitle(1, total_cnt);
       displayQuestionAndAnswers(0)
-  
-      $('.quiz-next').prop('disabled', true);
-      $('.quiz-end').prop('disabled', true);
   
       $q_cnt++
     })
@@ -63,6 +66,8 @@ document.addEventListener('turbolinks:load', () => {
   
       if ($q_cnt == total_cnt){
         $('.quiz-end').prop('disabled', false);
+        $('.quiz-end').removeClass('display-none');
+        $('.quiz-next').addClass('display-none');
       }else{
         $('.quiz-next').prop('disabled', false);
       }
