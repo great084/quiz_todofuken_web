@@ -54,7 +54,14 @@ body {
   height: 3rem;
 }
 
-// 非表示アクション
+// ボタン表示制御
 .display-none{
   display: none;
+}
+
+.btn-selected{
+  color: #ffffff !important; 
+  background-color: #0062fc !important;
+  border-color: #005cbf !important;
+  opacity: 1 !important;
 }

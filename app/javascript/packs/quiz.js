@@ -11,6 +11,9 @@ document.addEventListener('turbolinks:load', () => {
     }
   
     var displayQuestionAndAnswers = function(cnt){
+      // 選択したボタンの色の強調を解除
+      $('.answer').children('.btn').removeClass('btn-selected');
+
       // 問題文の表示
       $('#question').text("問題： " + gon.quiz_data[cnt][0] + questionSentence)
       // 回答選択肢の並べ替えと表示
@@ -63,6 +66,9 @@ document.addEventListener('turbolinks:load', () => {
       }
       $('.answers').find('.btn').prop('disabled', true).removeClass('correct_answer');
       // $('.answers').find('.btn').addClass('btn-secondary');
+
+      // 選択したボタンの色を強調
+      $(this).addClass('btn-selected');
   
       if ($q_cnt == total_cnt){
         $('.quiz-end').prop('disabled', false);
