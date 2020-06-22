@@ -29,15 +29,15 @@
   <div class="quiz-start-area">
 
     <!-- モーダル起動ボタン -->
-    <button class="btn btn-lg btn-block btn-success quiz-start" data-toggle="modal" data-target="#quizModal">クイズスタート</button>
+    <button class="btn btn-lg btn-block btn-success quiz-start" data-toggle="modal" data-target="#quizModal">もう一度やる（復習）</button>
     <!-- 戻るボタン -->
-    <%= link_to '戻る（クイズの種類と問題数を選びなおす）', root_path, class: "btn btn-lg btn-block btn-light" %>
+    <%= link_to '戻る（クイズを選ぶ）', root_path, class: "btn btn-lg btn-block btn-info" %>
 
   </div>
 
 
   <!-- モーダルウィンドウ -->
-  <div class="modal show" id="quizModal" tabindex="1" data-backdrop='static'>
+  <div class="modal" id="quizModal" tabindex="1" data-backdrop='static'>
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">

@@ -45,9 +45,7 @@ document.addEventListener('turbolinks:load', () => {
 
     $(window).on('load',function(){
       $('#quizModal').show();
-    // });
-  
-    // $('.quiz-start').click( function(){
+
       initializeValueAndButton();
       
       displayTitle(1, total_cnt);
@@ -56,6 +54,17 @@ document.addEventListener('turbolinks:load', () => {
       $q_cnt++
     })
   
+    $('.quiz-start').click( function(){
+      $('#quizModal').show();
+
+      initializeValueAndButton();
+      
+      displayTitle(1, total_cnt);
+      displayQuestionAndAnswers(0)
+  
+      $q_cnt++
+    })
+
     $('.quiz-next').click( function(){
   
       displayTitle($q_cnt + 1, total_cnt);
@@ -96,7 +105,7 @@ document.addEventListener('turbolinks:load', () => {
         $('.quiz-result-sentence-add').html("");
       }
   
-      $('.quiz-start').text("クイズスタート（復習する）")
+      // $('.quiz-start').text("クイズスタート（復習する）")
       $('#quizModal').hide();
   
     })

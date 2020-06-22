@@ -66,3 +66,12 @@ body {
   border-color: #005cbf !important;
   opacity: 1 !important;
 }
+
+.br-sp{
+  display: block;
+}
+
+@media  (min-width: 575px){	
+  .br-sp { display:none; }
+}
+
