@@ -45,6 +45,7 @@ document.addEventListener('turbolinks:load', () => {
 
     $(window).on('load',function(){
       $('#quizModal').show();
+      alert("window.on.load発火！");
 
       initializeValueAndButton();
       
