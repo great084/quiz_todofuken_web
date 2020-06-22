@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', () => {
       $('.quiz-judge-sentence').text("");
     }
 
-    $(window).on('load',function(){
+    // $(window).on('load',function(){
       $('#quizModal').show();
       alert("window.on.load発火！");
 
@@ -53,7 +53,7 @@ document.addEventListener('turbolinks:load', () => {
       displayQuestionAndAnswers(0)
   
       $q_cnt++
-    })
+    // })
   
     $('.quiz-start').click( function(){
       $('#quizModal').show();
