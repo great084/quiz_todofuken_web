@@ -105,7 +105,7 @@ document.addEventListener('turbolinks:load', () => {
         $('.quiz-result-sentence-add').html("");
       }
   
-      // $('.quiz-start').text("クイズスタート（復習する）")
+      $('.quiz-start').text("もう一度やる（復習）")
       $('#quizModal').hide();
   
     })
