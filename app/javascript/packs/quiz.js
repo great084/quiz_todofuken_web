@@ -1,4 +1,5 @@
 document.addEventListener('turbolinks:load', () => {
+// $('.quiz-start').addEventListener('turbolinks:load', () => {
   $(function(){
     var $q_cnt = 0;
     var $correct_cnt = 0;
@@ -29,18 +30,26 @@ document.addEventListener('turbolinks:load', () => {
       // 判定文言のクリア
       $('.quiz-judge-sentence').text("");
     }
-  
-    $('.quiz-start').click( function(){
+    
+    // ボタン表示と値の初期化
+    var initializeValueAndButton = function(){
       $q_cnt = 0;
       $correct_cnt = 0;
 
-      // ボタン表示の初期化
       $('.quiz-next').removeClass('display-none');
       $('.quiz-next').prop('disabled', true);
       $('.quiz-end').addClass('display-none');
 
       $('.quiz-judge-sentence').text("");
+    }
+
+    $(window).on('load',function(){
+      $('#quizModal').show();
+    // });
   
+    // $('.quiz-start').click( function(){
+      initializeValueAndButton();
+      
       displayTitle(1, total_cnt);
       displayQuestionAndAnswers(0)
   
@@ -88,6 +97,7 @@ document.addEventListener('turbolinks:load', () => {
       }
   
       $('.quiz-start').text("クイズスタート（復習する）")
+      $('#quizModal').hide();
   
     })
   
