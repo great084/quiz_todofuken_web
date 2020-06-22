@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', () => {
 // $('.quiz-start').addEventListener('turbolinks:load', () => {
-  $(function(){
+  $(window).on('load', function(){
     var $q_cnt = 0;
     var $correct_cnt = 0;
     var total_cnt = gon.quiz_data.length;
