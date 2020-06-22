@@ -44,8 +44,9 @@ document.addEventListener('turbolinks:load', () => {
     }
 
     // $(window).on('load',function(){
-      $('#quizModal').show();
-      alert("window.on.load発火！");
+      $('#quizModal').modal('show');
+      // $('#quizModal').fadeIn();
+      // alert("window.on.load発火！");
 
       initializeValueAndButton();
       
@@ -56,7 +57,7 @@ document.addEventListener('turbolinks:load', () => {
     // })
   
     $('.quiz-start').click( function(){
-      $('#quizModal').show();
+      // $('#quizModal').modal('show');
 
       initializeValueAndButton();
       
