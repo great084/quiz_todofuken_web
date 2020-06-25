@@ -100,9 +100,9 @@ document.addEventListener('turbolinks:load', () => {
     });
   
     $('.quiz-end').click( function() {
-      $('.quiz-result-sentence').html( total_cnt + "問中、" + $correct_cnt + "問、正解しました！");
+      $('.quiz-result-sentence').html( total_cnt + '問中' + $correct_cnt + '問、<br class="br-sp" />正解しました！');
       if ($correct_cnt == total_cnt){
-        $('.quiz-result-sentence-add').html("全問正解！すごいぜ！自慢しよう！");
+        $('.quiz-result-sentence-add').html('全問正解！すごいぜ！<br class="br-sp" />自慢しよう！');
       }else{
         $('.quiz-result-sentence-add').html("");
       }
