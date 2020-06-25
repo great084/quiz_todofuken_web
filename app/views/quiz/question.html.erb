@@ -1,22 +1,23 @@
 
-<h2 class="text-center my-2">クイズを始めよう</h2>
+<h2 class="text-center my-2">選んだクイズ</h2>
   <div class="quiz-form border rounded p-3">
     <div class="row">
-      <div class="col-sm-4 pt-0">クイズの種類</div>
-      <div class="col-sm-8">
+      <div class="col-12">
+      <h3>
         <% if @quiz_type == "capital" %> 
           県庁所在地をあてる
         <% else %>
           都道府県名をあてる
         <% end %>
+      </h3>
       </div>
     </div>
     <div class="row mt-2">
-      <div class="col-sm-4">
-        出題数
+      <div class="col-4">
+        <h3>出題数</h3>
       </div>
-      <div class="col-sm-8">
-        <%= @quiz_numbers  %>問
+      <div class="col-8">
+        <h3><%= @quiz_numbers  %>問</h3>
       </div>
     </div>
   </div>

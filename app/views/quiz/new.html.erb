@@ -1,27 +1,33 @@
-<h2 class="text-center my-2">クイズの種類と<br class="br-sp" />問題数を選ぼう</h2>
-<%= form_with url: quiz_create_path, class: "quiz-form border rounded p-3", local: true do |f| %>
-  <div class="form-group">
-    <div class="row">
-      <div class="col-form-label col-sm-4 pt-0">クイズの種類</div>
-      <div class="col-sm-8">
-        <div class="form-check">
-          <%= f.radio_button :quiz_type,'capital', class: "form-check-input", checked: true %>
-          <%= f.label :quiz_type_capital, '県庁所在地をあてる', class: "form-check-label"  %>
-        </div>
-        <div class="form-check">
-          <%= f.radio_button :quiz_type,'pref', class: "form-check-input" %>
-          <%= f.label :quiz_type_pref, '都道府県名をあてる', class: "form-check-label" %>
-        </div>
+<h2 class="text-center my-2">クイズを選んで<br class="br-sp" />始めよう</h2>
+  <div class="quiz-select-area border rounded mt-3 py-2">
+    <div class="row text-center">
+      <div class="col-12 my-2">
+        <h3 class="quiz-type text-center">県庁所在地をあてる</h3>
+      </div>
+      <div class="col-6 col-md-3 px-4 my-2">
+        <%= button_to "1０問", quiz_create_path, params: {quiz_type: 'capital', quiz_numbers: 10} , class:"btn btn-block btn-primary" %>
+      </div>
+      <div class="col-6 col-md-3 px-4 my-2">
+        <%= button_to "２０問", quiz_create_path, params: {quiz_type: 'capital', quiz_numbers: 20} , class:"btn btn-block btn-primary" %>
+      </div>
+      <div class="col-12 col-md-6 px-4 my-2">
+        <%= button_to "47問（全都道府県）", quiz_create_path, params: {quiz_type: 'capital', quiz_numbers: 47} , class:"btn btn-lg btn-block btn-primary" %>
       </div>
     </div>
-  </h2>
-  <div class="form-group row mt-2">
-    <div class="col-sm-4">
-      <%= f.label 'quiz_numbers', 'クイズの出題数' %>
-    </div>
-    <div class="col-sm-8">
-      <%= f.number_field :quiz_numbers, in: 1..47, step: 1 , class: "form-control", required: true %>
+  </div>
+  <div class="quiz-select-area border rounded mt-3 py-2">
+    <div class="row text-center">
+      <div class="col-12 my-2">
+        <h3 class="quiz-type text-center">都道府県名をあてる</h3>
+      </div>
+      <div class="col-6 col-md-3 px-4 my-2">
+        <%= button_to "1０問", quiz_create_path, params: {quiz_type: 'pref', quiz_numbers: 10} , class:"btn btn-block btn-success" %>
+      </div>
+      <div class="col-6 col-md-3 px-4 my-2">
+        <%= button_to "２０問", quiz_create_path, params: {quiz_type: 'pref', quiz_numbers: 20} , class:"btn btn btn-block btn-success" %>
+      </div>
+      <div class="col-12 col-md-6 px-4 my-2">
+        <%= button_to "47問（全都道府県）", quiz_create_path, params: {quiz_type: 'pref', quiz_numbers: 47} , class:"btn btn-lg btn btn-block btn-success" %>
+      </div>
     </div>
   </div>
-  <%= f.submit 'クイズをはじめる' ,class:"btn btn-lg btn-block btn-success" %>
-<% end %>
