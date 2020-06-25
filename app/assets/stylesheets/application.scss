@@ -14,6 +14,7 @@
  *= require_self
  */
  @import "bootstrap/scss/bootstrap";
+ @import url('https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap');
 
 body {
   background-color: #fffffe;
@@ -53,6 +54,15 @@ body {
 
 .queestion-judge-area, .quiz-judge-area{
   height: 3rem;
+}
+
+.result-title{
+  font-family: 'Sawarabi Mincho', sans-serif;
+  letter-spacing: 0.8rem;
+}
+
+.result-title::before, .result-title::after{
+  content: "〜";
 }
 
 // ボタン表示制御

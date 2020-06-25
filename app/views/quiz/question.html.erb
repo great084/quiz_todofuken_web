@@ -1,27 +1,8 @@
 
-<h2 class="text-center my-2">選んだクイズ</h2>
-  <div class="quiz-form border rounded p-3">
-    <div class="row">
-      <div class="col-12">
-      <h3>
-        <% if @quiz_type == "capital" %> 
-          県庁所在地をあてる
-        <% else %>
-          都道府県名をあてる
-        <% end %>
-      </h3>
-      </div>
-    </div>
-    <div class="row mt-2">
-      <div class="col-12">
-        <h3>出題数：<%= @quiz_numbers  %>問</h3>
-      </div>
-    </div>
-  </div>
-
-  <div class="quiz-result-area my-3 p-3 text-center">
-      <h2 class="quiz-result-sentence"></h2>
-      <h3 class="quiz-result-sentence-add  text-success"></h3>
+<div class="quiz-result-area my-4 py-1 text-center">
+  <h1 class="result-title">成績表</h1>
+  <h3 class="quiz-result-sentence-add  text-success mt-3"></h3>
+  <h5 class="quiz-result-sentence mt-3"></h5>
   </div>
 
   <div class="quiz-start-area">

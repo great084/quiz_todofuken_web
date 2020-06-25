@@ -4,8 +4,9 @@ document.addEventListener('turbolinks:load', () => {
     var $q_cnt = 0;
     var $correct_cnt = 0;
     var total_cnt = gon.quiz_data.length;
+    var quizTypeName = ( gon.quiz_type == "capital") ? "県庁所在地" : "都道府県名";
     var questionSentence = ( gon.quiz_type == "capital") ? "の県庁所在地は？" : "がある都道府県は？";
-  
+    var MaxQuesitonNumber = 47;
   
     var displayTitle = function(cnt, total){
       $('#question-title').text("第" + (cnt) + "問   /   全：" + total + "問");
@@ -16,7 +17,7 @@ document.addEventListener('turbolinks:load', () => {
       $('.answer').children('.btn').removeClass('btn-selected');
 
       // 問題文の表示
-      $('#question').text("問題： " + gon.quiz_data[cnt][0] + questionSentence)
+      $('#question').text(`問題： ${gon.quiz_data[cnt][0]}${questionSentence}`)
       // 回答選択肢の並べ替えと表示
       var $slide = Math.floor(Math.random() * 4);
       for (var i=0; i<4; i++){
@@ -100,11 +101,18 @@ document.addEventListener('turbolinks:load', () => {
     });
   
     $('.quiz-end').click( function() {
-      $('.quiz-result-sentence').html( total_cnt + '問中' + $correct_cnt + '問、<br class="br-sp" />正解しました！');
-      if ($correct_cnt == total_cnt){
-        $('.quiz-result-sentence-add').html('全問正解！すごいぜ！<br class="br-sp" />自慢しよう！');
+      $('.quiz-result-sentence').html( `あなたは、<br class="br-sp" />
+                                        ${quizTypeName}あてクイズで、<br class="br-sp" />
+                                        ${total_cnt}問中${$correct_cnt}問、<br class="br-sp" />
+                                        正解しました！`);
+      if ($correct_cnt == MaxQuesitonNumber){
+        $('.quiz-result-sentence-add').html('★ 都道府県マイスターで賞');
+      }else if ($correct_cnt == total_cnt){
+        $('.quiz-result-sentence-add').html('★ よくがんばったで賞');
+      }else if ($correct_cnt > total_cnt * 0.8 ){ 
+        $('.quiz-result-sentence-add').html('★ あといっぽで賞');
       }else{
-        $('.quiz-result-sentence-add').html("");
+        $('.quiz-result-sentence-add').html('★ まだまだで賞');
       }
   
       $('.quiz-start').text("もう一度やる（復習）")
