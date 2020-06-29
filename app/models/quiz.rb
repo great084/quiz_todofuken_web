@@ -3,7 +3,7 @@ class Quiz
   CATEGORY_PREFECTURE = 1
 
   PREFECTURE_DATA = 0
-  CAPTITAL_DATA = 1
+  CAPITAL_DATA = 1
 
   def initialize(category, type, numbers)
     @category = category
@@ -27,17 +27,17 @@ class Quiz
         quiz_order.each do |num|
           quiz_data <<
             [ pref_data[num][PREFECTURE_DATA],                      
-              pref_data[num][CAPTITAL_DATA],                        
-              pref_data[(num + slide_num * 1) % 47][CAPTITAL_DATA], 
-              pref_data[(num + slide_num * 2) % 47][CAPTITAL_DATA], 
-              pref_data[(num + slide_num * 3) % 47][CAPTITAL_DATA]  
+              pref_data[num][CAPITAL_DATA],                        
+              pref_data[(num + slide_num * 1) % 47][CAPITAL_DATA], 
+              pref_data[(num + slide_num * 2) % 47][CAPITAL_DATA], 
+              pref_data[(num + slide_num * 3) % 47][CAPITAL_DATA]  
             ] 
         end
         # byebug
       else
         quiz_order.each do |num|
           quiz_data <<
-            [ pref_data[num][CAPTITAL_DATA],                        
+            [ pref_data[num][CAPITAL_DATA],                        
               pref_data[num][PREFECTURE_DATA],                        
               pref_data[(num + slide_num * 1) % 47][PREFECTURE_DATA], 
               pref_data[(num + slide_num * 2) % 47][PREFECTURE_DATA], 
